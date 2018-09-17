@@ -2,10 +2,10 @@
  * Created by Administrator on 2018/1/24.
  */
 module.exports = {
-    publicPath: '/wechat-h5',
-    outputPath: '/wechat-h5',
+    publicPath: '/dist',
+    outputPath: '/dist',
     copyArr: [
-        { from: '../src/assets/lib', to: '../wechat-h5/static/lib' },
+        { from: '../src/assets/lib', to: '../dist/static/lib' },
     ]
 
 };

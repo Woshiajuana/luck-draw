@@ -1,7 +1,6 @@
 import $                from 'jquery'
 import Toast            from './toast'
 import Config           from 'config/env.config'
-import '../../assets/lib/es6-promise'
 function Http (options) {
     this.method = options.method || 'post';
     this.data = options.data || {};
