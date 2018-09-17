@@ -64,7 +64,7 @@ const ListController = {
         }, 1000)
     },
     applyCreditCard () {
-        return window.open('draw.html', '_self');
+
         let applyUserName = $('#name').val();
         let applyMobile = $('#phone').val();
         let applyIdCard = $('#card').val();
@@ -95,7 +95,7 @@ const ListController = {
             $('#phone').val('');
             $('#card').val('');
             $('#code').val('');
-            window.open(this.params.linkUrl, '_self')
+            window.open('draw.html', '_self')
         }).catch((err) => {
             Toast.msg(err);
         })
