@@ -1,0 +1,141 @@
+@import "../../assets/scss/_define";
+@import "../../assets/scss/common";
+
+body{
+    background-color: #fff;
+    min-height: j(480);
+}
+.header{
+    @extend %df;
+    flex-direction: column;
+    align-items: center;
+    padding-top: j(40);
+}
+.logo{
+    @extend %db;
+    width: j(70);
+    height: j(70);
+    background: url("../../assets/images/statement_iocn.png") no-repeat;
+    background-size: contain;
+}
+.prompt{
+    margin-top: j(16);
+    font-size: j(14);
+    color: #333;
+    strong{
+        @extend %fwn;
+        @extend %dib;
+        margin: 0 j(5);
+        font-size: j(16);
+        color: #029BDD;
+    }
+}
+
+.from-wrap{
+    margin-top: j(30);
+}
+.from-item{
+    @extend %df;
+    @extend %pr;
+    align-items: center;
+    height: j(50);
+    //margin: 0 j(20);
+    //border-bottom: 1px solid #f2f2f2;
+    &:after{
+        content: '';
+        @extend %pa;
+        bottom: 0;
+        left: j(20);
+        right: j(20);
+        height: 1px;
+        background-color: #f2f2f2;
+    }
+}
+.from-label{
+    @extend %bsb;
+    font-size: j(16);
+    color: #333;
+    width: j(100);
+    padding-left: j(20);
+}
+.from-value{
+    flex: 1;
+    height: j(30);
+    input{
+        @extend %db;
+        @extend %w100;
+        @extend %h100;
+        @extend %tar;
+        @extend %bsb;
+        border: none;
+        background-color: #fff;
+        font-size: j(16);
+        color: #333;
+        padding-right: j(20);
+    }
+}
+input::-webkit-input-placeholder{
+    color:#DEDEDE;
+}
+.from-code{
+    @extend %df;
+    @extend %bsb;
+    border: 1px solid #029BDD;
+    width: j(70);
+    height: j(36);
+    border-radius: j(8);
+    justify-content: center;
+    align-items: center;
+    background-color: #029BDD;
+    margin-right: j(20);
+    span{
+        font-size: j(14);
+        color: #fff;
+    }
+}
+.from-code-disabled{
+    border-color: #ddd;
+    background-color: #fff;
+    span{
+        color: #999;
+    }
+}
+
+.from-button{
+    @extend %df;
+    justify-content: center;
+    align-items: center;
+    margin: j(50) j(16) 0;
+    background-color: #029BDD;
+    border-radius: j(8);
+    height: j(48);
+    span{
+        font-size: j(18);
+        color: #fff;
+    }
+}
+
+.footer{
+    @extend %pa;
+    @extend %df;
+    align-items: center;
+    left: 0;
+    right: 0;
+    bottom: j(40);
+    justify-content: center;
+    span,
+    .icon{
+        @extend %db;
+    }
+    span{
+        font-size: j(12);
+        color: #999;
+    }
+}
+.icon{
+    width: j(63);
+    height: j(14);
+    background: url("../../assets/images/make_inline_logo.png") no-repeat;
+    background-size: contain;
+    margin: 0 j(5);
+}

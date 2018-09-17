@@ -1,0 +1,47 @@
+@import "../../assets/scss/_reset";
+@import "../../assets/scss/_define";
+html, body {
+    @extend %pr;
+    @extend %h100;
+    @extend %oh;
+}
+body {
+    background-color: #f2f2f2;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.pop-msg-wrap,
+.pop-wrap{
+    @extend %pf;
+    @extend %t0;
+    @extend %l0;
+    @extend %r0;
+    @extend %b0;
+    @extend %df;
+    justify-content: center;
+    align-items: center;
+}
+.pop-wrap{
+    background-color: rgba(0,0,0,.1);
+}
+.pop-prompt{
+    @extend %dib;
+    color: #ffffff;
+    padding: j(5) j(30);
+    line-height: 1.5;
+    font-size: j(14);
+    border-radius: j(4);
+    margin: 0 j(30);
+    background-color: rgba(0,0,0,.9);
+}
+.pop-icon{
+    @extend %pa;
+    @extend %t50;
+    @extend %l50;
+    margin-top: -15px;
+    margin-left: -15px;
+    width: 31px;
+    height: 31px;
+    background: url("../../assets/images/loading.gif") no-repeat;
+    background-size: contain;
+}

@@ -1,0 +1,63 @@
+@import "../../assets/scss/_define";
+@import "../../assets/scss/common";
+
+.prompt{
+    @extend %df;
+    align-items: center;
+    height: j(30);
+    justify-content: center;
+    background-color: #FFFEEF;
+}
+.prompt-icon{
+    @extend %db;
+    background: url("../../assets/images/attention_icon.png") no-repeat;
+    background-size: contain;
+    width: j(16);
+    height: j(16);
+    margin-right: j(4);
+}
+.prompt-text{
+    font-size: j(12);
+    color: #333;
+}
+
+
+.list{
+    @extend %df;
+    flex-wrap: wrap;
+    font-size: 0;
+}
+.item{
+    @extend %df;
+    @extend %bsb;
+    border-top: 2px solid #f2f2f2;
+    border-right: 2px solid #f2f2f2;
+    justify-content: center;
+    align-items: center;
+    width: j(125);
+    height: j(125);
+    flex-direction: column;
+    background-color: #fff;
+    &:nth-child(3n){
+        border-right: none;
+    }
+    a{
+        @extend %w100;
+        @extend %h100;
+        @extend %df;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.icon{
+    @extend %db;
+    width: j(50);
+    height: j(50);
+}
+.name{
+    @extend %db;
+    margin-top: j(10);
+    font-size: j(16);
+    color: #333;
+}
