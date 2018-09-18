@@ -1,6 +1,50 @@
 import $                from 'jquery'
 import Http             from '../../assets/lib/http'
 import Toast            from '../../assets/lib/toast'
+import Stars            from '../../assets/lib/Star'
+import Meteor           from '../../assets/lib/Meteor'
+import Moon           from '../../assets/lib/Moon'
+
+
+const CanvasController = {
+    init () {
+        let canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext('2d'),
+            width = window.innerWidth,
+            height = window.innerHeight,
+            moon = new Moon(ctx, width, height),
+            stars = new Stars(ctx, width, height, 200),
+            meteors = [],
+            count = 0;
+        canvas.width = width;
+        canvas.height = height;
+        const meteorGenerator = ()=> {
+            let x = Math.random() * width + 200;
+            if (meteors.length < 1) meteors.push(new Meteor(ctx, x, height));
+            setTimeout(()=> {
+                meteorGenerator()
+            }, Math.random() * 6000)
+        };
+        const frame = ()=> {
+            count++;
+            count % 10 === 0 && stars.blink();
+            moon.draw();
+            stars.draw();
+            meteors.forEach((meteor, index, arr)=> {
+                if (meteor.flow()) {
+                    meteor.draw()
+                } else {
+                    arr.splice(index, 1)
+                }
+            });
+            requestAnimationFrame(frame)
+        };
+        meteorGenerator();
+        frame()
+    }
+};
+CanvasController.init();
+
 
 // 列表控制器
 const ListController = {

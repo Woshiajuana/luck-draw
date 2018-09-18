@@ -2,8 +2,37 @@
 @import "../../assets/scss/common";
 
 body{
-    background-color: #fff;
     min-height: j(480);
+    background: #000 url("../../assets/images/city.png") no-repeat bottom center;
+    background-size: 100% auto;
+}
+.canvas{
+    @extend %pa;
+    @extend %w100;
+    @extend %h100;
+    @extend %t0;
+    @extend %l0;
+}
+.moon{
+    @extend %pa;
+    top: j(-100);
+    right: j(-100);
+    width: j(200);
+    height: j(200);
+    background: url("../../assets/images/moon.png") no-repeat center;
+    background-size: contain;
+    i{
+        @extend %db;
+        @extend %pa;
+        @extend %t50;
+        @extend %l50;
+        margin-top: j(-90);
+        margin-left: j(-90);
+        width: j(180);
+        height: j(180);
+        border-radius: 50%;
+        box-shadow: 0 0 j(300) j(20) #ffe925;
+    }
 }
 .header{
     @extend %df;
@@ -32,6 +61,7 @@ body{
 }
 
 .from-wrap{
+    @extend %pr;
     margin-top: j(30);
 }
 .from-item{
