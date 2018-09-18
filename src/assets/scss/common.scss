@@ -26,13 +26,13 @@ body {
 }
 .pop-prompt{
     @extend %dib;
-    color: #ffffff;
+    color: #000;
     padding: j(5) j(30);
     line-height: 1.5;
     font-size: j(14);
     border-radius: j(4);
     margin: 0 j(30);
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(255,255,255,.9);
 }
 .pop-icon{
     @extend %pa;

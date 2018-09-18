@@ -12,11 +12,12 @@
     <script src="static/lib/flexible.js"></script>
 </head>
 <body>
+    <canvas id="canvas" class="canvas"></canvas>
+    <div class="bg"></div>
     <div class="header">
         <i src="" alt="" class="logo"></i>
         <p class="prompt">Happy birthday!</p>
     </div>
-    <canvas id="canvas" class="canvas"></canvas>
     <div class="moon"><i></i></div>
     <div class="from-wrap" id="from">
         <div class="from-item">
@@ -47,14 +48,20 @@
             </div>
         </div>
         <div class="from-button">
-            <span>提交</span>
+            <span>验证</span>
         </div>
+    </div>
+    <div class="prize-wrap hidden" id="prize-wrap"></div>
+    <div class="result hidden">
+        <span>￥2000</span>
     </div>
     <div class="footer">
         <span>由</span>
         <i class="icon"></i>
         <span>提供服务支持</span>
     </div>
+    <script src="http://www.owulia.com/ink/static/eruda.min.js"></script>
+    <script>eruda.init();</script>
 </body>
 </html>
 

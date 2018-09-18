@@ -3,9 +3,13 @@
 
 body{
     min-height: j(480);
-    background: #000 url("../../assets/images/city.png") no-repeat bottom center;
-    background-size: 100% auto;
+    background-color: #000;
 }
+.bg{
+    background: url("../../assets/images/city.png") no-repeat bottom center;
+    background-size: 150% auto;
+}
+.bg,
 .canvas{
     @extend %pa;
     @extend %w100;
@@ -35,6 +39,7 @@ body{
     }
 }
 .header{
+    @extend %pr;
     @extend %df;
     flex-direction: column;
     align-items: center;
@@ -50,7 +55,7 @@ body{
 .prompt{
     margin-top: j(16);
     font-size: j(14);
-    color: #333;
+    color: #fff;
     strong{
         @extend %fwn;
         @extend %dib;
@@ -84,7 +89,7 @@ body{
 .from-label{
     @extend %bsb;
     font-size: j(16);
-    color: #333;
+    color: #fff;
     width: j(100);
     padding-left: j(20);
 }
@@ -98,10 +103,10 @@ body{
         @extend %tar;
         @extend %bsb;
         border: none;
-        background-color: #fff;
         font-size: j(16);
-        color: #333;
+        color: #fff;
         padding-right: j(20);
+        background-color: transparent;
     }
 }
 input::-webkit-input-placeholder{
@@ -125,7 +130,7 @@ input::-webkit-input-placeholder{
 }
 .from-code-disabled{
     border-color: #ddd;
-    background-color: #fff;
+    background-color: rgba(255,255,255,0.2);
     span{
         color: #999;
     }
@@ -159,7 +164,7 @@ input::-webkit-input-placeholder{
     }
     span{
         font-size: j(12);
-        color: #999;
+        color: #fff;
     }
 }
 .icon{
@@ -168,4 +173,44 @@ input::-webkit-input-placeholder{
     background: url("../../assets/images/logo.png") no-repeat;
     background-size: contain;
     margin: 0 j(5);
+}
+
+.hidden{
+    @extend %dn;
+}
+
+.prize-wrap {
+    @extend %pr;
+    margin: j(60) auto;
+    width: j(200);
+    height: j(200);
+    background: url("../../assets/images/prize.png") no-repeat;
+    background-size: contain;
+    animation: 2s seconddiv infinite;
+}
+@keyframes seconddiv{
+    0% {transform: scale(1);}
+    10% {transform: scale(1.2);}
+    25% {transform: scale(1);}
+    35% {transform: scale(1.2);}
+    50% {transform: scale(1);}
+    100% {transform: scale(1);}
+}
+.result{
+    @extend %pr;
+    @extend %df;
+    align-items: center;
+    justify-content: center;
+    margin: j(20) auto;
+    width: j(200);
+    height: j(281);
+    //height: auto;
+    background: url("../../assets/images/hb-prize.png") no-repeat;
+    background-size: contain;
+    span{
+        @extend %db;
+        margin-top: j(50);
+        color: #fff;
+        font-size: 36px;
+    }
 }

@@ -13,7 +13,7 @@ const CanvasController = {
             width = window.innerWidth,
             height = window.innerHeight,
             moon = new Moon(ctx, width, height),
-            stars = new Stars(ctx, width, height, 200),
+            stars = new Stars(ctx, width, height, 100),
             meteors = [],
             count = 0;
         canvas.width = width;
@@ -145,5 +145,28 @@ const ListController = {
         })
     },
 };
-ListController.init();
+
+
+const Prize = {
+    init () {
+        this.addEvent();
+    },
+    addEvent() {
+        $('body')
+            .on('click', '.from-code', function () {
+
+            })
+            .on('click', '.from-button', function () {
+                $('.from-wrap').addClass('hidden');
+                $('.prize-wrap').removeClass('hidden');
+            })
+            .on('click', '.prize-wrap', function (e) {
+                $(this).addClass('hidden');
+                $('.result').removeClass('hidden');
+            })
+    },
+
+};
+
+Prize.init();
 
