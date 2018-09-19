@@ -5,6 +5,7 @@ function Http (options) {
     this.method = options.method || 'post';
     this.data = {
         reqBody: options.reqBody,
+        reqHeader: {},
     };
     this.url = Config.API_URL + options.url;
     return this[this.method]();
