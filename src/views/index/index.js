@@ -56,14 +56,12 @@ const Prize = {
             .on('click', '.prize-btn', this.handleLottery.bind(this))
     },
     handleLottery () {
-        let mobileNo = $('#phone').val();
-        let identityID = $('#card').val();
         let options = {
             url: 'drawLottery',
             loading: '加载中...',
             reqBody: {
-                mobileNo,
-                identityID,
+                mobileNo: this.mobileNo,
+                identityID: this.identityID,
                 appUser: 'jf',
             }
         };
@@ -73,9 +71,11 @@ const Prize = {
             if (!respHeader) throw '请求失败';
             let { respCode, respMessage } = respHeader;
             if (respCode !== '0000') throw respMessage;
-            let data = respBody ? JSON.parse(respBody) : '';
+            console.log(respBody)
+            let value = respBody.value || 0;
             $('.prize-wrap').addClass('hidden');
             $('.result').removeClass('hidden');
+            $('.amount-num').text('￥' + value / 100);
         }).catch((err) => {
             Toast.msg(err);
         })
@@ -114,13 +114,22 @@ const Prize = {
             if (!respHeader) throw '请求失败';
             let { respCode, respMessage } = respHeader;
             if (respCode !== '0000') throw respMessage;
-            let data = respBody ? JSON.parse(respBody) : '';
+            this.mobileNo = mobileNo;
+            this.identityID = identityID;
             $('#name').val('');
             $('#phone').val('');
             $('#card').val('');
             $('#code').val('');
-            $('.from-wrap').addClass('hidden');
-            $('.prize-wrap').removeClass('hidden');
+            console.log(respBody)
+            if (!respBody) {
+                $('.from-wrap').addClass('hidden');
+                $('.prize-wrap').removeClass('hidden');
+            } else {
+                let value = respBody.value || 0;
+                $('.from-wrap').addClass('hidden');
+                $('.result').removeClass('hidden');
+                $('.amount-num').text('￥' + value / 100);
+            }
         }).catch((err) => {
             Toast.msg(err);
         })
@@ -152,7 +161,6 @@ const Prize = {
             if (!respHeader) throw '请求失败';
             let { respCode, respMessage } = respHeader;
             if (respCode !== '0000') throw respMessage;
-            let data = respBody ? JSON.parse(respBody) : '';
             $('.from-code').addClass('from-code-disabled');
             Toast.msg('发送验证码成功');
             this.countDown();

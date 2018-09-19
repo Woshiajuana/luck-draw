@@ -261,6 +261,7 @@ input::-webkit-input-placeholder{
 .result{
     @extend %pr;
     @extend %df;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: j(20) auto;
@@ -271,8 +272,20 @@ input::-webkit-input-placeholder{
     span{
         @extend %db;
         margin-top: j(50);
-        color: #fff;
-        font-size: 36px;
+        color: #FFAA05;
+        font-size: j(48);
+    }
+    .text{
+        @extend %db;
+        @extend %tac;
+        line-height: j(28);
+        margin-top: 0;
+        font-size: j(18);
+        color: #FFAA05;
+        width: j(134);
+        height: j(28);
+        background-color: #b43925;
+        border-radius: j(28);
     }
 }
 
