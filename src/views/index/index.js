@@ -160,8 +160,8 @@ const Prize = {
                 $('.from-wrap').addClass('hidden');
                 $('.prize-wrap').removeClass('hidden');
             })
-            .on('click', '.prize-wrap', function (e) {
-                $(this).addClass('hidden');
+            .on('click', '.prize-btn', function (e) {
+                $('.prize-wrap').addClass('hidden');
                 $('.result').removeClass('hidden');
             })
     },
