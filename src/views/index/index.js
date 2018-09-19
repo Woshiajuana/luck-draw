@@ -50,10 +50,9 @@ const Prize = {
         this.addEvent();
     },
     addEvent() {
-        $('body')
-            .on('click', '.from-code', this.handleSend.bind(this))
-            .on('click', '.from-button', this.handleCheck.bind(this))
-            .on('click', '.prize-btn', this.handleLottery.bind(this))
+        $('.from-wrap').on('click', '.from-code', this.handleSend.bind(this))
+            .on('click', '.from-button', this.handleCheck.bind(this));
+        $('.prize-btn').on('click', this.handleLottery.bind(this))
     },
     handleLottery () {
         let options = {

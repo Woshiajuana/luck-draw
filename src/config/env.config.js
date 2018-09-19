@@ -1,2 +1,2 @@
-import env from './env.bd.config';
+import env from './env.sc.config';
 export default env;
