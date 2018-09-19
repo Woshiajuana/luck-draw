@@ -86,7 +86,7 @@ const Prize = {
         let identityID = $('#card').val();
         let validateCode = $('#code').val();
         if (!userName)
-            return Toast.msg('请输入申请人');
+            return Toast.msg('请输入姓名');
         if (!identityID)
             return Toast.msg('请输入身份证号');
         if (!/^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/.test(identityID))
@@ -121,14 +121,15 @@ const Prize = {
             $('#card').val('');
             $('#code').val('');
             console.log(respBody)
-            if (!respBody) {
-                $('.from-wrap').addClass('hidden');
-                $('.prize-wrap').removeClass('hidden');
-            } else {
-                let value = respBody.value || 0;
+            if (respBody && respBody[0]) {
+                let value = respBody[0].value || 0;
                 $('.from-wrap').addClass('hidden');
                 $('.result').removeClass('hidden');
                 $('.amount-num').text('￥' + value / 100);
+            } else {
+                $('.from-wrap').addClass('hidden');
+                $('.prize-wrap').removeClass('hidden');
+
             }
         }).catch((err) => {
             Toast.msg(err);
