@@ -53,10 +53,32 @@ const Prize = {
         $('body')
             .on('click', '.from-code', this.handleSend.bind(this))
             .on('click', '.from-button', this.handleCheck.bind(this))
-            .on('click', '.prize-btn', function (e) {
-                $('.prize-wrap').addClass('hidden');
-                $('.result').removeClass('hidden');
-            })
+            .on('click', '.prize-btn', this.handleLottery.bind(this))
+    },
+    handleLottery () {
+        let mobileNo = $('#phone').val();
+        let identityID = $('#card').val();
+        let options = {
+            url: 'drawLottery',
+            loading: '加载中...',
+            reqBody: {
+                mobileNo,
+                identityID,
+                appUser: 'jf',
+            }
+        };
+        Http(options).then((res) => {
+            res = res || {};
+            let { respBody, respHeader } = res;
+            if (!respHeader) throw '请求失败';
+            let { respCode, respMessage } = respHeader;
+            if (respCode !== '0000') throw respMessage;
+            let data = respBody ? JSON.parse(respBody) : '';
+            $('.prize-wrap').addClass('hidden');
+            $('.result').removeClass('hidden');
+        }).catch((err) => {
+            Toast.msg(err);
+        })
     },
     handleCheck () {
         let userName = $('#name').val();
