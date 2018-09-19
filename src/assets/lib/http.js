@@ -3,14 +3,16 @@ import Toast            from './toast'
 import Config           from 'config/env.config'
 function Http (options) {
     this.method = options.method || 'post';
-    this.data = options.data || {};
+    this.data = {
+        reqBody: options.reqBody,
+    };
     this.url = Config.API_URL + options.url;
     return this[this.method]();
 }
 
 Http.prototype.post = function () {
     return new Promise((resolve, reject) => {
-        console.log(this.url + '请求 => ', this.data)
+        console.log(this.url + '请求 => ', this.data);
         $.ajax({
             type: 'POST',
             timeout: 60 * 1000,

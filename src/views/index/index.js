@@ -122,7 +122,7 @@ const ListController = {
         let options = {
             url: 'exchange/creditcard/v1/apply',
             loading: '加载中...',
-            data: {
+            reqBody: {
                 refereeUserNo: this.params.refereeUserNo,
                 applyUserName,
                 applyMobile,
@@ -153,19 +153,55 @@ const Prize = {
     },
     addEvent() {
         $('body')
-            .on('click', '.from-code', function () {
-
-            })
-            .on('click', '.from-button', function () {
-                $('.from-wrap').addClass('hidden');
-                $('.prize-wrap').removeClass('hidden');
-            })
+            .on('click', '.from-code', this.handleSend.bind(this))
+            .on('click', '.from-button', this.handleCheck.bind(this))
             .on('click', '.prize-btn', function (e) {
                 $('.prize-wrap').addClass('hidden');
                 $('.result').removeClass('hidden');
             })
     },
-
+    handleCheck () {
+        $('.from-wrap').addClass('hidden');
+        $('.prize-wrap').removeClass('hidden');
+    },
+    handleSend () {
+        let type = $('.from-code').hasClass('from-code-disabled');
+        if (type) return;
+        let mobileNo = $('#phone').val();
+        if (!mobileNo) return Toast.msg('请输入手机号');
+        if (!/^1\d{10}$/.test(mobileNo)) return Toast.msg('请输入正确的手机号');
+        Toast.show('loading');
+        let options = {
+            url: 'sendMsg',
+            loading: '加载中...',
+            reqBody: {
+                mobileNo,
+            }
+        };
+        Http(options).then((data) => {
+            let {errMsg, result, success} = data;
+            if (!success) throw errMsg;
+            $('.from-code').addClass('from-code-disabled');
+            Toast.msg('发送验证码成功');
+            this.countDown();
+        }).catch((err) => {
+            Toast.msg(err);
+        }).finally(() => {
+            Toast.hide();
+        })
+    },
+    countDown(time = 60) {
+        let $el = $('.from-code span');
+        $el.text(`${time} s`);
+        time--;
+        if (time <= 1) {
+            $('.from-code').removeClass('from-code-disabled');
+            return $el.text('获取');
+        }
+        setTimeout(() => {
+            this.countDown(time);
+        }, 1000)
+    },
 };
 
 Prize.init();
